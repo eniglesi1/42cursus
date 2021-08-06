@@ -18,11 +18,12 @@ int	ft_strncmp (const char *s1, const char *s2, size_t n);
 int	main(void)
 {
 	int			c;
-	char		string[76] = "157";
+	int			n = 30;
+	char		string[76] = "15987565656656565";
 	char		string2[76] = "1598";
 
-	c = 5;
+	c = 53;
 	printf("before = %s\n", string);
-	printf("%d\n", ft_strncmp(string, string2, c));
+	printf("%d\n", ft_strncmp(string, string2, n));
 	printf("after  = %s\n", string2);
 }
