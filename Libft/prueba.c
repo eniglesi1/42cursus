@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prueba.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eniglesi <eniglesi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/06 19:24:59 by eniglesi          #+#    #+#             */
+/*   Updated: 2021/08/06 19:25:23 by eniglesi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-unsigned long	ft_strlcat(char *dst, const char *src, size_t size);
+int	ft_strncmp (const char *s1, const char *s2, size_t n);
 
 int	main(void)
 {
 	int			c;
-	char	string[] = "Morty no? Ese pequeño son of a bitch";
-	char	string2[76] = "Hola mundo de Rick y Morty, en fin, ";
+	char		string[76] = "157";
+	char		string2[76] = "1598";
 
-	c = strlen("Morty no? Ese pequeño son of a bitch");
-	printf("before = %s\n",string2);
-	printf("%lu\n", ft_strlcat(string2, string, 73));
-	printf("%lu\n", strlen("Hola mundo de Rick y Morty, en fin, Morty no? Ese pequeño son of a bitch"));
-	printf("after  = %s\n",string2);
+	c = 5;
+	printf("before = %s\n", string);
+	printf("%d\n", ft_strncmp(string, string2, c));
+	printf("after  = %s\n", string2);
 }
