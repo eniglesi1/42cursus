@@ -40,5 +40,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int	ft_tolower(char c);
 int	ft_toupper(char c);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif
