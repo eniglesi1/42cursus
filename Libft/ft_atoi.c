@@ -6,24 +6,27 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 18:50:37 by eniglesi          #+#    #+#             */
-/*   Updated: 2021/08/23 19:07:19 by marvin           ###   ########.fr       */
+/*   Updated: 2021/08/24 15:15:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-unsigned long	ft_strlen(const char *s);
-int ft_atoi (const char *nptr)
-{
-    int b;
-    int a;
 
-    b = ft_strlen(nptr);
-    while (b != 0)
-    {
-        a = nptr
-        nptr = ntpr / 10;
-    
-       b--;
-    }
-    return (a);
+int	ft_atoi (const char *nptr)
+{
+	int	a;
+	int	b;
+	
+	a = 0;
+	b = 0;
+	if (nptr[0] == '-')
+		b++;
+	while (nptr[b] != '\0')
+	{
+		a = a * 10 + (nptr[b] - 48);
+		b++;
+	}
+	if (nptr[0] == '-')
+		a = a * -1;
+	return (a);
 }
