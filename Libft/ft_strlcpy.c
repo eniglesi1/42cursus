@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+
 unsigned long	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	unsigned long	a;

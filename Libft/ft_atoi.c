@@ -12,11 +12,11 @@
 
 #include <stdlib.h>
 
-int	ft_atoi (const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	a;
 	int	b;
-	
+
 	a = 0;
 	b = 0;
 	if (nptr[0] == '-')

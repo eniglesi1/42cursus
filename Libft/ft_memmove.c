@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	a[42];
