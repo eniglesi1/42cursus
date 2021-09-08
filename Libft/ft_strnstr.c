@@ -11,18 +11,20 @@
 /* ************************************************************************** */
 
 #include "stddef.h"
+
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int i;
-	if(*little == '\0')
+	int	i;
+
+	if (*little == '\0')
 		return ((char *)big);
-	while(big && len != 0)
+	while (big && len != 0)
 	{
 		i = 0;
-		while(little[i] == big[i])
+		while (little[i] == big[i])
 		{
 			i++;
-			if(little[i] == '\0')
+			if (little[i] == '\0')
 				return ((char *)big);
 		}
 		big++;

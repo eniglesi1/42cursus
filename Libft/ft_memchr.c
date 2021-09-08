@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+
 void	*ft_memchr(char *s, int c, size_t n)
 {
 	while (s && n != 0)
