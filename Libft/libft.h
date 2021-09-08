@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#define LIBFT_H
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stddef.h>
-#include <stdio.h>
+# define LIBFT_H
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <stddef.h>
+# include <stdio.h>
 
 int				ft_atoi(const char *nptr);
 void			ft_bzero(void *s, size_t n);
