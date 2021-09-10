@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+s/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   prueba.c                                           :+:      :+:    :+:   */
@@ -21,9 +21,9 @@ int	main(void)
 	
 	c = 53;
 	c = c + n;
-	string2 = substr(string, 3, 20);
+	string2 = ft_substr(string, 3, 20);
 	printf("before = %s, %d\n", string2, c);
-	printf("%s !\n%s !\n", ft_substr(string, 7, 20), substr(string, 7, 20));
+	printf("%s !\n%s !\n", ft_substr(string, 7, 20), ft_substr(string, 7, 20));
 	string2 = ft_substr(string, 3, 20);
 	printf("after  = %s\n", string2);
 }
