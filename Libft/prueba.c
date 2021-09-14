@@ -1,4 +1,4 @@
-s/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   prueba.c                                           :+:      :+:    :+:   */
@@ -14,16 +14,17 @@ s/* ************************************************************************** *
 
 int	main(void)
 {
-	int			c;
-	int			n = 50;
-	char		string[76] = "hola, que tal estás?";
-	char		*string2;
-	
-	c = 53;
-	c = c + n;
-	string2 = ft_substr(string, 3, 20);
-	printf("before = %s, %d\n", string2, c);
-	printf("%s !\n%s !\n", ft_substr(string, 7, 20), ft_substr(string, 7, 20));
-	string2 = ft_substr(string, 3, 20);
-	printf("after  = %s\n", string2);
+	unsigned long	c;
+	char			string[40] = "hola, que tal estás?";
+	char			string2[40] = "Estoy aparolando";
+
+	c = ft_strlcat(string2, string, 25);
+	printf("before = %s, %lu\n", string2, c);
+	char string3[40] = "Estoy aparolando";
+	printf("%lu !\n", strlcat(string3, string, 25));
+	char string4[40] = "Estoy aparolando";
+	printf("%lu !\n", ft_strlcat(string4, string, 25));
+	char string5[40] = "Estoy aparolando";
+	c = strlcat(string5, string, 25);
+	printf("after  = %s, %lu\n", string5, c);
 }
