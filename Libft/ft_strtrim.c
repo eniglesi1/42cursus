@@ -6,19 +6,19 @@
 /*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:24:24 by eniglesi          #+#    #+#             */
-/*   Updated: 2021/09/14 18:24:26 by eniglesi         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:22:54 by eniglesi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strtrim(char *s1, char const *set)
+char	*ft_strtrim(char *s1, char const *set)
 {
-	int	b;
-	int	i;
+	int		b;
+	int		i;
 	char	*a;
 
-	a = malloc((ft_strlen(s) + 1) * sizeof(char));
+	a = malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!a)
 		return (NULL);
 	i = 0;

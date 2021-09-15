@@ -20,9 +20,9 @@ int	ft_memcmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	while (n != i)
 	{
-		if (s1[i] - s2[i] != 0)
+		if (s2[i] - s1[i] != 0)
 		{
-			i = s1[i] - s2[i];
+			i = s2[i] - s1[i];
 			return (i);
 		}
 		i++;

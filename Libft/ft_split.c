@@ -10,7 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char **ft_split(char const *s, char c)
+#include "libft.h"
+
+char	**ft_split(char const *s, char c)
 {
-	
+	char	**a;
+	int		i;
+	int		j;
+	int		g;
+
+	i = 0;
+	j = 0;
+	g = 0;
+	a = malloc(sizeof(char) * ft_strlen(s));
+	if (!a)
+		return (NULL);
+	if (!s)
+		return (NULL);
+	while (s)
+	{
+		while (s[i] != c)
+		{
+			a[j][g] = s[i];
+			i++;
+			g++;
+		}
+		g = 0;
+		j++;
+	}
+	return (a);
 }
