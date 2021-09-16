@@ -24,7 +24,10 @@ int	main(void)
 	printf("%lu !\n", strlcpy(string3, string, 25));
 	char string4[40] = "Estoy aparolando";
 	printf("%lu !\n", ft_strlcpy(string4, string, 25));
-	char string5[40] = "Estoy aparolando";
-	c = strlcpy(string5, string, 25);
-	printf("after  = %s, %lu\n", ft_strchr(string5, 'i'), c);
+	char string5[40] = "tripouille";
+	c = strlcpy(string5, string5 + 1, 1);
+	printf("after  = %s, %s\n", ft_strchr(string5, 'i'), string5);
+	
+	printf("substr: %s\n", ft_substr("tripouille", 1, 1));
+
 }

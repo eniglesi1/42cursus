@@ -16,17 +16,25 @@ int	ft_atoi(const char *nptr)
 {
 	int	a;
 	int	b;
+	int	neg;
 
+	neg = 0;
 	a = 0;
 	b = 0;
-	if (nptr[0] == '-')
+	while (nptr[b] == 0 || nptr[b] == 9 || nptr[b] == 10 || nptr[b] == 11 || nptr[b] == 12 || nptr[b] == 13) {
 		b++;
-	while (nptr[b] != '\0')
+	}
+	if (nptr[b] == '-')
+		neg++;
+	else if (nptr[b] == '+')
+		b++;
+	b = b + neg;
+	while (nptr[b] != '\0' && nptr[b] > 47 && nptr[b] < 58)
 	{
 		a = a * 10 + (nptr[b] - 48);
 		b++;
 	}
-	if (nptr[0] == '-')
+	if (neg % 2 == 1)
 		a = a * -1;
 	return (a);
 }

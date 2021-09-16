@@ -14,14 +14,17 @@
 
 unsigned long	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	a;
+	size_t	a;
 	int	i;
 
 	a = 0;
 	i = 0;
 	while (dst[a] != '\0')
 		a++;
-	size = (size - a) - 1;
+	if (size > a)
+		size = (size - a) - 1;
+	else
+		return (size + ft_strlen(src));
 	while (size > 0)
 	{
 		if (src[i] != '\0')
