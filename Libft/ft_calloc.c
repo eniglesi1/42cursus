@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 14:31:25 by eniglesi          #+#    #+#             */
-/*   Updated: 2021/08/25 14:31:27 by eniglesi         ###   ########.fr       */
+/*   Updated: 2021/09/10 23:06:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 	a = malloc(nmemb * size);
+	if (!a)
+		return (NULL);
 	ft_bzero(a, size);
 	return (a);
 }
