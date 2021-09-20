@@ -16,6 +16,6 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	char	*a;
 
-	a = ft_itoa(n);
+	a = ft_itoa(n);//cambiar el itoa por las líneas de código sin malloc
 	write(fd, a, ft_strlen(a));
 }
