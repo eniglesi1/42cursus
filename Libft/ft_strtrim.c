@@ -12,52 +12,43 @@
 
 #include "libft.h"
 
-char	*ft_strtrim(char *s1, char const *set)
+char	*ft_recorte(char const *s1, char const *set)
 {
-	int		b;
+	char	*a;
 	int		i;
-	char	a[ft_strlen(s1) + 1];
-	char	*aux;
 
 	i = 0;
-	b = 0;
-	if (set[0] == 0)
+	while (set[i])
 	{
-		aux = malloc(ft_strlen(s1) + 1);
-		ft_strlcpy(aux, s1, ft_strlen(s1) + 1);
-		return (aux);
-	}
-	while (set[i] != 0)
-	{
-		while (s1[b] == set[i])
-		{
-			b++;
-		}
+		while (set[i] == *s1)
+			s1++;
 		i++;
 	}
 	i = 0;
-	if (s1[b] != set[0] && s1[b] != 0)
-		while (s1[b] != set[0] && s1[b] != 0)
-		{
-			a[i] = s1[b];
-			i++;
-			b++;
-		}
-	else
-      return (malloc(1));
-	i = 0;
-	aux = malloc((ft_strlen(a) + 1) * sizeof(char));
-	if (!aux)
-		return (NULL);
-	if (*s1 == 0 && *set == 0)
+	while (*set != *s1)
 	{
-		ft_bzero(aux, 1);
-		return (aux);
-	}
-	while (a[i])
-	{
-		aux[i] = a[i];
 		i++;
+		s1++;
 	}
-	return (aux);
+	a = malloc(sizeof(char) * i);
+	ft_strlcpy(a, s1 - i, i + 1);
+	return (a);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*a;
+
+	if (!*set || !set)
+	{
+		a = malloc(ft_strlen(s1) + 1);
+		if (!a)
+			return (NULL);
+		ft_strlcpy(a, s1, ft_strlen(s1) + 1);
+		return (a);
+	}
+	if (!s1 || !*s1)
+		return (malloc(1));
+	a = ft_recorte(s1, set);
+	return (a);
 }

@@ -14,8 +14,8 @@
 
 static int	count_words(char const *s, char c)
 {
-	int words;
-	int i;
+	int	words;
+	int	i;
 
 	words = 0;
 	i = 0;
@@ -34,7 +34,7 @@ static int	count_words(char const *s, char c)
 
 static int	word_len(const char *s, char c, int start)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[start + i] != c && s[start + i] != '\0')
@@ -42,7 +42,7 @@ static int	word_len(const char *s, char c, int start)
 	return (i);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
 	int		i;
@@ -50,7 +50,8 @@ char		**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	if (!(ptr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1))))
+	(ptr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1)));
+	if (!ptr)
 		return (NULL);
 	i = 0;
 	start = 0;

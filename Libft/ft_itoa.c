@@ -16,12 +16,37 @@ int	ft_baits(int n)
 {
 	int	a;
 
+	if (n == 0)
+		return(1);
 	a = 0;
 	while (n != 0)
 	{
 		n = n / 10;
 		a++;
 	}
+	return (a);
+}
+char	*ft_intochar(int i, int n)
+{
+	char	*a;
+
+	if (n < 0 && n != -2147483648)
+	{
+		n = n * -1;
+		i++;
+	}
+	a = malloc(sizeof(char) * i + 1);
+	if (!a)
+		return (NULL);
+	a[i] = 0;
+	while (n != 0)
+	{
+		i--;
+		a[i] = ((n % 10) + 48);
+		n = n / 10;
+	}
+	if (i == 1)
+		a[0] = '-';
 	return (a);
 }
 
@@ -31,14 +56,17 @@ char	*ft_itoa(int n)
 	int		i;
 
 	i = ft_baits(n);
-	a = malloc(sizeof(char) * i + 1);
-	if (!a)
-		return (NULL);
-	while (n != 0)
+	if (n != 0 && n != -2147483648)
+		a = ft_intochar(i, n);
+	else if (n == -2147483648)
 	{
-		a[i] = ((n % 10) + 48);
-		n = n / 10;
-		i--;
+		a = malloc(12);
+		ft_strlcpy(a, "-2147483648", 12);
+	}
+	else
+	{
+		a = malloc(2);
+		ft_strlcpy(a, "0", 2);
 	}
 	return (a);
 }
