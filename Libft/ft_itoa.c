@@ -16,8 +16,6 @@ int	ft_baits(int n)
 {
 	int	a;
 
-	if (n == 0)
-		return(1);
 	a = 0;
 	while (n != 0)
 	{
@@ -26,11 +24,12 @@ int	ft_baits(int n)
 	}
 	return (a);
 }
+
 char	*ft_intochar(int i, int n)
 {
 	char	*a;
 
-	if (n < 0 && n != -2147483648)
+	if (n < 0)
 	{
 		n = n * -1;
 		i++;
