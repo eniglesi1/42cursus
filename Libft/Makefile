@@ -18,7 +18,7 @@ SRC = 	ft_atoi.c 		ft_bzero.c 		ft_calloc.c 	ft_isalnum.c 	\
 		ft_strjoin.c 	ft_strlcat.c 	ft_strlcpy.c 	ft_strlen.c 	\
 		ft_strmapi.c 	ft_strncmp.c 	ft_strnstr.c 	ft_strrchr.c 	\
 		ft_strtrim.c 	ft_substr.c 	ft_tolower.c 	ft_toupper.c 	\
-		libft.h 		ft_putendl_fd.c ft_putnbr_fd.c
+		ft_putendl_fd.c ft_putnbr_fd.c
 OBJS = $(SRC:.c=.o)
 HEADERS = libft.h
 NAME = libft.a
@@ -29,11 +29,11 @@ all: $(NAME)
 %.o: %.c
 	$(CC) -c $(FLAGS) $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) libft.h
 	ar -crs $(NAME) $(OBJS)
 
 clean:
-	/bin/rm -f *.o
+	/bin/rm -f $(OBJS)
 
 fclean: clean
 	/bin/rm -f $(NAME)
