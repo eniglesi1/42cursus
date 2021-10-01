@@ -69,37 +69,3 @@ char	**ft_split(char const *s, char c)
 	ptr[start] = NULL;
 	return (ptr);
 }
-
-/*char	**ft_split(char const *s, char c)
-{
-	char	**a;
-	int		i;
-	int		j;
-	int		g;
-	char	**aux;
-
-	i = 0;
-	j = 0;
-	g = 0;
-	a = malloc(sizeof(char) * ft_strlen(s));
-	if (!a)
-		return (NULL);
-	if (!s)
-		return (NULL);
-	while (s)
-	{
-		while (s[i] != c)
-		{
-			a[j][g] = s[i];
-			i++;
-			g++;
-		}
-		if (g != 0)
-			a[j][g] = '\0';
-		g = 0;
-		j++;
-		i++;
-	}
-	return (a);
-}
-*/

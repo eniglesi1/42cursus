@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ctype.h"
-#include "stddef.h"
+#include "libft.h"
 
 size_t	ft_memcmp(const char *s1, const char *s2, size_t n)
 {

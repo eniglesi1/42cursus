@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_baits(int n)
+static int	ft_baits(int n)
 {
 	int	a;
 
@@ -25,7 +25,7 @@ int	ft_baits(int n)
 	return (a);
 }
 
-char	*ft_intochar(int i, int n)
+static char	*ft_intochar(int i, int n)
 {
 	char	*a;
 

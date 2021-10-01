@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_baits(int n)
+static int	ft_baits(int n)
 {
 	int	a;
 
@@ -25,7 +25,7 @@ int	ft_baits(int n)
 	return (a);
 }
 
-void	blake(int fd, int n)
+static void	blake(int fd, int n)
 {
 	char	c[12];
 	int		i;
