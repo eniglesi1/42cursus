@@ -25,16 +25,18 @@ static int	ft_baits(int n)
 	return (a);
 }
 
-static void	blake(int fd, int n)
+static int	blake(int fd, int n)
 {
 	char	c[12];
 	int		i;
+	int		a;
 
 	i = ft_baits(n);
+	a = i;
 	if (n < 0)
 	{
 		n = n * -1;
-		write(fd, "-", 1);
+		a += write(fd, "-", 1);
 	}
 	while (n > 0)
 	{
@@ -42,15 +44,20 @@ static void	blake(int fd, int n)
 		c[i] = ((n % 10) + 48);
 		n = n / 10;
 	}
-	write(fd, c, 12);
+	write(1, c, a);
+	return(a);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
+	int	a;
+
+	a = 0;
 	if (n != 0 && n != -2147483648)
-		blake(fd, n);
+		a = blake(fd, n);
 	else if (n == -2147483648)
-		write(fd, "-2147483648", 11);
+		a = write(fd, "-2147483648", 11);
 	else
-		write(fd, "0", 1);
+		a = write(fd, "0", 1);
+	return(a);
 }
