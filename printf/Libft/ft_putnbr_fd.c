@@ -45,7 +45,7 @@ static int	blake(int fd, int n)
 		n = n / 10;
 	}
 	write(1, c, a);
-	return(a);
+	return (a);
 }
 
 int	ft_putnbr_fd(int n, int fd)
@@ -59,5 +59,5 @@ int	ft_putnbr_fd(int n, int fd)
 		a = write(fd, "-2147483648", 11);
 	else
 		a = write(fd, "0", 1);
-	return(a);
+	return (a);
 }
