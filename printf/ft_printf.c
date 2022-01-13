@@ -32,6 +32,13 @@ static int	ft_baits(int n)
 	return (a);
 }
 
+static int	open(char *s)
+{
+	while (s[0] == '\0')
+		s++;
+	return (ft_putstr_fd(s, 1));
+}
+
 static int	ft_hexa(char a, long i, char *base)
 {
 	char	*c;
@@ -44,17 +51,17 @@ static int	ft_hexa(char a, long i, char *base)
 	if (a == 'p')
 	{
 		baits += ft_putstr_fd("0x", 1);
-		aux += 2;
+		aux += 4;
 	}
 	if (i == 0)
 		baits += ft_putchar_fd('0', 1);
-	while (i > 0 & aux >= 0)
+	while (i > 0)
 	{
 		aux--;
 		c[aux] = base[i % 16];
 		i /= 16;
 	}
-	baits += ft_putstr_fd(c, 1);
+	baits += open(c);
 	free(c);
 	return (baits);
 }
