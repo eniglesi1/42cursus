@@ -12,7 +12,20 @@
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	
+	static int	i = 0;
+	char		*s;
+	char		*string
+
+	read(fd, s[i], 1);
+	while(s[i] != '\n')
+	{
+		;
+		i++;
+		read(fd, s[i], BUFFER_SIZE);
+	}
+	if (s[i] == '\n')
+		write(1, "\n", 2);
+	return (string);
 }
