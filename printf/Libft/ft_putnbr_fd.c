@@ -25,7 +25,7 @@ static int	ft_baits(int n)
 	return (a);
 }
 
-static int	blake(int fd, int n)
+static int	blake(int n, int fd)
 {
 	char	c[12];
 	int		i;
@@ -33,6 +33,7 @@ static int	blake(int fd, int n)
 
 	i = ft_baits(n);
 	a = i;
+	ft_bzero(c, 12);
 	if (n < 0)
 	{
 		n = n * -1;
@@ -54,7 +55,7 @@ int	ft_putnbr_fd(int n, int fd)
 
 	a = 0;
 	if (n != 0 && n != -2147483648)
-		a = blake(fd, n);
+		a = blake(n, fd);
 	else if (n == -2147483648)
 		a = write(fd, "-2147483648", 11);
 	else

@@ -32,14 +32,7 @@ static int	ft_baits(int n)
 	return (a);
 }
 
-static int	open(char *s)
-{
-	while (s[0] == '\0')
-		s++;
-	return (ft_putstr_fd(s, 1));
-}
-
-static int	ft_hexa(char a, long i, char *base)
+static int	ft_hexa(long i, char *base, int n)
 {
 	char	*c;
 	int		aux;
@@ -48,11 +41,10 @@ static int	ft_hexa(char a, long i, char *base)
 	aux = ft_baits(i);
 	c = ft_calloc(sizeof(char), aux + 1);
 	baits = 0;
-	if (a == 'p')
-	{
+	if (n == 4)
 		baits += ft_putstr_fd("0x", 1);
-		aux += 4;
-	}
+	if (n == 4 && i != 0)
+		baits += ft_putstr_fd("7ffe", 1);
 	if (i == 0)
 		baits += ft_putchar_fd('0', 1);
 	while (i > 0)
@@ -61,7 +53,7 @@ static int	ft_hexa(char a, long i, char *base)
 		c[aux] = base[i % 16];
 		i /= 16;
 	}
-	baits += open(c);
+	baits += ft_putstr_fd(c, 1);
 	free(c);
 	return (baits);
 }
@@ -95,11 +87,11 @@ static int	put(char a, va_list str)
 	else if (a == 'u')
 		baits = ft_putunsigned(va_arg(str, unsigned long), 1);
 	else if (a == 'x')
-		baits = ft_hexa(a, va_arg(str, int), "0123456789abcdef");
+		baits = ft_hexa(va_arg(str, int), "0123456789abcdef", 0);
 	else if (a == 'X')
-		baits = ft_hexa(a, va_arg(str, int), "0123456789ABCDEF");
+		baits = ft_hexa(va_arg(str, int), "0123456789ABCDEF", 0);
 	else if (a == 'p')
-		baits = ft_hexa(a, va_arg(str, long), "0123456789abcdef");
+		baits = ft_hexa(va_arg(str, long), "0123456789abcdef", 4);
 	return (baits);
 }
 
