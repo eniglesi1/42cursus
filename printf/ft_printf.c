@@ -17,7 +17,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include "./Libft/libft.h"
+#include "ft_printf.h"
 
 static int	ft_baits(int n)
 {

@@ -22,9 +22,9 @@ all: $(NAME)
 %.o: %.c
 	$(CC) -c $(FLAGS) $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) ft_printf.h
 	@make -C ./libft
-	ar -crs $(NAME) $(OBJS) $(LIB)
+	ar -crs $(NAME) $(OBJS) $(LIB) ./libft/*.o
 
 clean:
 	/bin/rm -f $(OBJS)
