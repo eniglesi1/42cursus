@@ -1,6 +1,4 @@
-#include "./Libft/libft.h"
-
-int ft_printf(const char *a, ...);
+# include "ft_printf.h"
 
 int main(){
 	int c = 42;

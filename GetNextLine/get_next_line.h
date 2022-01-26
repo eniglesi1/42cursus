@@ -17,6 +17,7 @@
 # include <string.h>
 # include <stddef.h>
 # include <stdio.h>
+# define BUFFER_SIZE 99
 
 char	*get_next_line(int fd);
 
