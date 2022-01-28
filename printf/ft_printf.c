@@ -114,10 +114,7 @@ int	ft_printf(const char *a, ...)
 			baits += put(a[i], args);
 		}
 		else
-		{
-			write(1, &(a[i]), 1);
-			baits++;
-		}
+			baits += write(1, &(a[i]), 1);
 		i++;
 	}
 	va_end(args);
