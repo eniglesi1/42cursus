@@ -35,19 +35,17 @@ static int	ft_baits(unsigned long n)
 static int	ft_hexa(unsigned long i, char *base, int n)
 {
 	char	*c;
-	long		aux;
+	long	aux;
 	int		baits;
 
 	aux = ft_baits(i);
-//	printf("\n%li\n", aux);
 	c = ft_calloc(sizeof(char), aux + 1);
 	baits = 0;
 	if (n == 4)
 		baits += ft_putstr_fd("0x", 1);
 	if (i == 0)
 		baits += ft_putchar_fd('0', 1);
-//	printf("\n%li\n", aux);
-	while (aux >= 0 &&  i > 0)
+	while (aux >= 0 && i > 0)
 	{
 		aux--;
 		c[aux] = base[i % 16];
