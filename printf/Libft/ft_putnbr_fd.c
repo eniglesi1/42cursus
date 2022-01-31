@@ -31,22 +31,21 @@ static int	blake(int n, int fd)
 	int		i;
 	int		a;
 
-	i = ft_baits(n);
-	a = i;
+	a = 0;
 	ft_bzero(c, 12);
 	if (n < 0)
 	{
 		n = n * -1;
 		a += write(fd, "-", 1);
 	}
+	i = ft_baits(n);
 	while (n > 0)
 	{
 		i--;
 		c[i] = ((n % 10) + 48);
 		n = n / 10;
 	}
-	write(1, c, a);
-	return (a);
+	return (write(1, c, ft_strlen(c)) + a);
 }
 
 int	ft_putnbr_fd(int n, int fd)
