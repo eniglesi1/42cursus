@@ -15,11 +15,17 @@
 static void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*a;
+	int		n;
 
-	a = malloc(nmemb * size);
+	n = nmemb * size;
+	a = malloc(nmemb * size + 1);
 	if (!a)
 		return (NULL);
-	ft_bzero(a, nmemb * size);
+	while (n > 0)
+	{
+		n--;
+		((char *)a)[n] = '\0';
+	}
 	return (a);
 }
 
@@ -38,14 +44,25 @@ static int	fakexplicator(char *extra)
 static char	*me_fumo_4_porros(char *string, char *extra, int aux)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (extra[i] != '\n')
-		i++;
-	i++;
-    if(extra[i])
-        ft_strlcpy(extra, &extra[i], ft_strlen(extra + i) + 1);
-	return (ft_realloc(string, aux));
+	j = 0;
+	if (extra)
+	{
+		while (extra[i] != '\n' && extra[i])
+			i++;
+		while ((&extra[i + 1])[j] != '\0')
+			j++;
+		if (extra[i] == '\n')
+		{
+			ft_strlcpy(extra, &extra[i + 1], j + 1);
+			string[aux] = '\n';
+		}
+		else if(!extra[i])
+			extra[0] = 0;
+	}
+	return (ft_realloc(string, 0));
 }
 
 static int    repet(char *string, char *extra)
@@ -70,20 +87,16 @@ char	*get_next_line(int fd)
 	int				aux;
 
 	string = ft_calloc(sizeof(char), BUFFER_SIZE + 1);
-	if (extra[0])
-		ft_bzero(extra, BUFFER_SIZE	+ 1);
 	if (string == NULL)
 		return (NULL);
 	baits = -7;
 	aux = repet(string, extra);
-	if (extra[aux] == '\n')
-	{
-		string[aux] = '\n';
-        return (me_fumo_4_porros(string, extra, aux));
-	}
+	if (extra[aux])
+		return (me_fumo_4_porros(string, extra, aux));
 	while ((fakexplicator(extra) == -1 && baits == BUFFER_SIZE) || baits == -7)
 	{
 		baits = read(fd, extra, BUFFER_SIZE);
+		extra[baits] = 0;
 		j = 0;
 		if (baits != 0)
 		{
@@ -102,17 +115,12 @@ char	*get_next_line(int fd)
 		}
 	}
 	
-	if (baits == 0 && aux == 0)
+	if (baits == 0 && !string[0])
 	{
 		free(string);
 		return (NULL);
 	}
 	if (baits == 0)
 		return (string);
-	if (extra[j] == '\n')
-	{
-		string[aux] = '\n';
-		string = me_fumo_4_porros(string, extra, aux);
-	}
-	return (string);
+	return (me_fumo_4_porros(string, extra, aux));
 }
