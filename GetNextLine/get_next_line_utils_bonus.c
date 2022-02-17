@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 12:47:28 by eniglesi          #+#    #+#             */
-/*   Updated: 2022/01/13 12:47:31 by eniglesi         ###   ########.fr       */
+/*   Created: 2022/02/16 21:49:20 by eniglesi          #+#    #+#             */
+/*   Updated: 2022/02/16 21:49:24 by eniglesi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {

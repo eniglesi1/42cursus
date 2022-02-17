@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 12:47:14 by eniglesi          #+#    #+#             */
-/*   Updated: 2022/01/13 12:47:19 by eniglesi         ###   ########.fr       */
+/*   Created: 2022/02/16 21:46:34 by eniglesi          #+#    #+#             */
+/*   Updated: 2022/02/16 21:46:36 by eniglesi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	*ft_calloc(size_t nmemb, size_t size)
 {
