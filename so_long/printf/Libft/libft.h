@@ -17,6 +17,7 @@
 # include <string.h>
 # include <stddef.h>
 # include <stdio.h>
+# include <fcntl.h>
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
@@ -52,5 +53,9 @@ int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_putnbr_fd(int n, int fd);
+char	*get_next_line(int fd);
+char	*ft_realloc(char *s1, int i);
+int		ft_copynl(char *extra, int baits, char *string, int aux);
+int		leer(int fd, char *extra);
 
 #endif

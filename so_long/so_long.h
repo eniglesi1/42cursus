@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eniglesi <eniglesi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/07 13:24:55 by eniglesi          #+#    #+#             */
-/*   Updated: 2021/09/27 09:24:57 by eniglesi         ###   ########.fr       */
+/*   Created: 2022/02/21 18:06:41 by eniglesi          #+#    #+#             */
+/*   Updated: 2022/02/21 18:06:43 by eniglesi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <stddef.h>
-# include <stdio.h>
-# include "Libft/libft.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
+# include "./printf/ft_printf.h"
 # include <fcntl.h>
 
-int	ft_printf(const char *a, ...);
+int	readmap(int fd,  char **mapa);
 
 #endif

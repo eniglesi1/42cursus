@@ -60,7 +60,7 @@ char	**ft_split(char const *s, char c)
 		if (s[i] != c)
 		{
 			ptr[start] = ft_substr(s, i, word_len(s, c, i));
-			i = i + word_len(s, c, i);
+			i += word_len(s, c, i);
 			start++;
 		}
 		else
