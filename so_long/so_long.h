@@ -15,6 +15,8 @@
 # include "./printf/ft_printf.h"
 # include <fcntl.h>
 
-int	readmap(int fd,  char **mapa);
+void	readmap(int fd, char **mapa);
+int		baits(char **argv);
+int		mapa_is_funcional(char **mapa);
 
 #endif

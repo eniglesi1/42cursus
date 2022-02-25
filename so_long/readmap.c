@@ -12,34 +12,28 @@
 
 #include "so_long.h"
 
-static char	**ft_realoc(char **s1)
+int	baits(char **argv)
 {
-	char	**a;
-	int		n;
+	int		i;
+	int		fd;
+	char	*str;
 
-	n = 0;
-	while (s1[n])
-		n++;
-	n += 1;
-	a = malloc(sizeof(char *) * n + 1);
-	if (!a)
-		return (s1);
-	n = 0;
-	ft_printf("\n--------------------\n");
-	while (s1[n])
+	i = 0;
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	str = get_next_line(fd);
+	while (str)
 	{
-		a[n] = malloc(sizeof(char) * ft_strlen(s1[n]));
-		ft_strlcpy(a[n], s1[n], ft_strlen(s1[n]));
-		ft_printf("%s\n", a[n]);
-		free(s1[n]);
-		n++;
+		i += ft_strlen(str) + 1;
+		free(str);
+		str = get_next_line(fd);
 	}
-	ft_printf("--------------------\n");
-	free(s1);
-	return (a);
+	close(fd);
+	return (i);
 }
 
-int	readmap(int fd,  char **mapa)
+void	readmap(int fd, char **mapa)
 {
 	int	i;
 
@@ -49,13 +43,9 @@ int	readmap(int fd,  char **mapa)
 		while (mapa[i] != NULL)
 		{
 			ft_printf("\n%i línea, \n%s\n", i, mapa[i]);
-			mapa = ft_realoc(mapa);
 			i++;
 			mapa[i] = get_next_line(fd);
 			mapa[i + 1] = NULL;
 		}
 	}
-	return (i);
 }
-
-
