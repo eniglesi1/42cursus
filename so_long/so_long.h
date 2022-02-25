@@ -14,6 +14,16 @@
 # define SO_LONG_H
 # include "./printf/ft_printf.h"
 # include <fcntl.h>
+# include "./mlx/mlx.h"
+
+typedef struct	s_data
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_data;
 
 void	readmap(int fd, char **mapa);
 int		baits(char **argv);
