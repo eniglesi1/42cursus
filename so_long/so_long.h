@@ -25,6 +25,15 @@ typedef struct	s_data
 	int		endian;
 }	t_data;
 
+typedef struct	s_image
+{
+	void	*mlx;
+	void	*img;
+	char	*relative_path;
+	int		img_width;
+	int		img_height;
+}	t_image;
+
 void	readmap(int fd, char **mapa);
 int		baits(char **argv);
 int		mapa_is_funcional(char **mapa);
