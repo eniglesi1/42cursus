@@ -72,8 +72,8 @@ int	main(int argc, char **argv)
 	mapa = malloc(1);
 	if (so_long(argc, argv, mapa))
 		return (0);
-	per.relative_path = "./images/images/Actor/Characters/Inspector/Faceset.png";
-	flr.relative_path = "./images/images/rabbit/tileset_3x1.png";
+	per.relative_path = "./images/change/Actor/Characters/Inspector/Faceset.png";
+	flr.relative_path = "./images/Sunnyland Trees Expansion Files/Sprites/Sliced Trees/flr.png";
 	wl.relative_path = "./images/KRG/icons/48x48/wood_01a.png";
 	per.img = mlx_png_file_to_image(mlx, per.relative_path, &per.img_width, &per.img_height);
 	flr.img = mlx_png_file_to_image(mlx, flr.relative_path, &flr.img_width, &flr.img_height);
@@ -84,10 +84,10 @@ int	main(int argc, char **argv)
 	int i = 0;
 	mlx_win = mlx_new_window(mlx, (wl.img_width * 30) + 1, (wl.img_height * 15) + 1, "Hello world!");
 //	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	while (j <= 29)
+	while (j * flr.img_width < wl.img_width * 15)
 	{
 		i = 0;
-		while (i <= 14)
+		while (i * flr.img_height < wl.img_height * 30)
 		{
 			//my_mlx_pixel_put(&img, j, i, 0x0000FF00);
 			mlx_put_image_to_window(mlx, mlx_win, flr.img, flr.img_height * i, flr.img_width * j);
@@ -121,5 +121,6 @@ int	main(int argc, char **argv)
 	}
 	mlx_put_image_to_window(mlx, mlx_win, per.img, 100, 100);
 	mlx_loop(mlx);
+	free(mapa);
 	return (0);
 }
