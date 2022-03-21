@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	baits(char **argv)
+int	lines(char **argv)
 {
 	int		i;
 	int		fd;
@@ -20,12 +20,10 @@ int	baits(char **argv)
 
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (-1);
 	str = get_next_line(fd);
 	while (str)
 	{
-		i += ft_strlen(str) + 1;
+		i++;
 		free(str);
 		str = get_next_line(fd);
 	}
@@ -42,10 +40,9 @@ void	readmap(int fd, char **mapa)
 	{
 		while (mapa[i] != NULL)
 		{
-			ft_printf("\n%i línea, \n%s\n", i, mapa[i]);
+			ft_printf("%s", mapa[i]);
 			i++;
 			mapa[i] = get_next_line(fd);
-			mapa[i + 1] = NULL;
 		}
 	}
 }

@@ -35,7 +35,7 @@ typedef struct	s_image
 }	t_image;
 
 void	readmap(int fd, char **mapa);
-int		baits(char **argv);
+int		lines(char **argv);
 int		mapa_is_funcional(char **mapa);
 
 #endif
