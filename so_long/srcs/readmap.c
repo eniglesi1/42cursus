@@ -40,7 +40,6 @@ void	readmap(int fd, char **mapa)
 	{
 		while (mapa[i] != NULL)
 		{
-			ft_printf("%s", mapa[i]);
 			i++;
 			mapa[i] = get_next_line(fd);
 		}

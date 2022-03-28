@@ -39,11 +39,11 @@ void	putline(int i, int j, t_so_long sl)
 void	dclvr(t_so_long *sl)
 {
 	sl->mlx = mlx_init();
-	sl->imgs.per.relative_path = "../includes/images/per.png";
-	sl->imgs.flr.relative_path = "../includes/images/flr.png";
-	sl->imgs.wl.relative_path = "../includes/images/wall.png";
-	sl->imgs.exit.relative_path = "../includes/images/Exit.png";
-	sl->imgs.cons.relative_path = "../includes/images/coin_01d.png";
+	sl->imgs.per.relative_path = "./includes/images/per.png";
+	sl->imgs.flr.relative_path = "./includes/images/flr.png";
+	sl->imgs.wl.relative_path = "./includes/images/wall.png";
+	sl->imgs.exit.relative_path = "./includes/images/Exit.png";
+	sl->imgs.cons.relative_path = "./includes/images/coin_01d.png";
 	sl->imgs.per.img = mlx_png_file_to_image(sl->mlx, sl->imgs.per.relative_path, &sl->imgs.per.img_width, &sl->imgs.per.img_height);
 	sl->imgs.flr.img = mlx_png_file_to_image(sl->mlx, sl->imgs.flr.relative_path, &sl->imgs.flr.img_width, &sl->imgs.flr.img_height);
 	sl->imgs.wl.img = mlx_png_file_to_image(sl->mlx, sl->imgs.wl.relative_path, &sl->imgs.wl.img_width, &sl->imgs.wl.img_height);
