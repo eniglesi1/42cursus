@@ -18,20 +18,20 @@ void	putline(int i, int j, t_so_long sl)
 	{
 		if (sl.mapa[i][j] == '1')
 			mlx_put_image_to_window(sl.mlx, sl.mlx_win, sl.imgs.wl.img,
-									sl.imgs.flr.img_height * j + (sl.imgs.flr.img_height / 2 - sl.imgs.wl.img_height / 2),
-									sl.imgs.flr.img_width * i + (sl.imgs.flr.img_height / 2 - sl.imgs.wl.img_height / 2));
+				sl.imgs.flr.h * j + (sl.imgs.flr.h / 2 - sl.imgs.wl.h / 2),
+				sl.imgs.flr.w * i + (sl.imgs.flr.h / 2 - sl.imgs.wl.h / 2));
 		if (sl.mapa[i][j] == 'P')
 			mlx_put_image_to_window(sl.mlx, sl.mlx_win, sl.imgs.per.img,
-									sl.imgs.flr.img_height * j + (sl.imgs.flr.img_height / 2 - sl.imgs.per.img_height / 2),
-									sl.imgs.flr.img_width * i + (sl.imgs.flr.img_width / 2 - sl.imgs.per.img_width / 2));
+				sl.imgs.flr.h * j + (sl.imgs.flr.h / 2 - sl.imgs.per.h / 2),
+				sl.imgs.flr.w * i + (sl.imgs.flr.w / 2 - sl.imgs.per.w / 2));
 		if (sl.mapa[i][j] == 'E')
 			mlx_put_image_to_window(sl.mlx, sl.mlx_win, sl.imgs.exit.img,
-									sl.imgs.flr.img_height * j + (sl.imgs.flr.img_height / 2 - sl.imgs.exit.img_height / 2),
-									sl.imgs.flr.img_width * i + (sl.imgs.flr.img_width / 2 - sl.imgs.exit.img_width / 2));
+				sl.imgs.flr.h * j + (sl.imgs.flr.h / 2 - sl.imgs.exit.h / 2),
+				sl.imgs.flr.w * i + (sl.imgs.flr.w / 2 - sl.imgs.exit.w / 2));
 		if (sl.mapa[i][j] == 'C')
 			mlx_put_image_to_window(sl.mlx, sl.mlx_win, sl.imgs.cons.img,
-									sl.imgs.flr.img_height * j + (sl.imgs.flr.img_height / 2 - sl.imgs.cons.img_height / 2),
-									sl.imgs.flr.img_width * i + (sl.imgs.flr.img_width / 2 - sl.imgs.cons.img_width / 2));
+				sl.imgs.flr.h * j + (sl.imgs.flr.h / 2 - sl.imgs.cons.h / 2),
+				sl.imgs.flr.w * i + (sl.imgs.flr.w / 2 - sl.imgs.cons.w / 2));
 		j++;
 	}
 }
@@ -44,12 +44,19 @@ void	dclvr(t_so_long *sl)
 	sl->imgs.wl.relative_path = "./includes/images/wall.png";
 	sl->imgs.exit.relative_path = "./includes/images/Exit.png";
 	sl->imgs.cons.relative_path = "./includes/images/coin_01d.png";
-	sl->imgs.per.img = mlx_png_file_to_image(sl->mlx, sl->imgs.per.relative_path, &sl->imgs.per.img_width, &sl->imgs.per.img_height);
-	sl->imgs.flr.img = mlx_png_file_to_image(sl->mlx, sl->imgs.flr.relative_path, &sl->imgs.flr.img_width, &sl->imgs.flr.img_height);
-	sl->imgs.wl.img = mlx_png_file_to_image(sl->mlx, sl->imgs.wl.relative_path, &sl->imgs.wl.img_width, &sl->imgs.wl.img_height);
-	sl->imgs.exit.img = mlx_png_file_to_image(sl->mlx, sl->imgs.exit.relative_path, &sl->imgs.exit.img_width, &sl->imgs.exit.img_height);
-	sl->imgs.cons.img = mlx_png_file_to_image(sl->mlx, sl->imgs.cons.relative_path, &sl->imgs.cons.img_width, &sl->imgs.cons.img_height);
-	sl->mlx_win = mlx_new_window(sl->mlx, (sl->imgs.flr.img_width * (ft_strlen(sl->mapa[0]) - 1)) + 1, (sl->imgs.flr.img_height * sl->lns) + 1, "Hello world!");
+	sl->imgs.per.img = mlx_png_file_to_image(sl->mlx,
+			sl->imgs.per.relative_path, &sl->imgs.per.w, &sl->imgs.per.h);
+	sl->imgs.flr.img = mlx_png_file_to_image(sl->mlx,
+			sl->imgs.flr.relative_path, &sl->imgs.flr.w, &sl->imgs.flr.h);
+	sl->imgs.wl.img = mlx_png_file_to_image(sl->mlx,
+			sl->imgs.wl.relative_path, &sl->imgs.wl.w, &sl->imgs.wl.h);
+	sl->imgs.exit.img = mlx_png_file_to_image(sl->mlx,
+			sl->imgs.exit.relative_path, &sl->imgs.exit.w, &sl->imgs.exit.h);
+	sl->imgs.cons.img = mlx_png_file_to_image(sl->mlx,
+			sl->imgs.cons.relative_path, &sl->imgs.cons.w, &sl->imgs.cons.h);
+	sl->mlx_win = mlx_new_window(sl->mlx,
+			(sl->imgs.flr.w * (ft_strlen(sl->mapa[0])
+					- 1)) + 1, (sl->imgs.flr.h * sl->lns) + 1, "Hello world!");
 }
 
 void	printmapa(t_so_long sl, int j, size_t i)
@@ -59,7 +66,8 @@ void	printmapa(t_so_long sl, int j, size_t i)
 		i = 0;
 		while (i < ft_strlen(sl.mapa[0]) - 1)
 		{
-			mlx_put_image_to_window(sl.mlx, sl.mlx_win, sl.imgs.flr.img, sl.imgs.flr.img_height * i, sl.imgs.flr.img_width * j);
+			mlx_put_image_to_window(sl.mlx, sl.mlx_win, sl.imgs.flr.img,
+				sl.imgs.flr.h * i, sl.imgs.flr.w * j);
 			i++;
 		}
 		j++;

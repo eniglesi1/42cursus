@@ -16,7 +16,7 @@
 # include <fcntl.h>
 # include "./mlx/mlx.h"
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -24,26 +24,26 @@ typedef struct	s_data
 	int		line_length;
 	int		endian;
 }	t_data;
-
-typedef struct	s_image
+//w = sidth && h = height 
+typedef struct s_image
 {
 	void	*mlx;
 	void	*img;
 	char	*relative_path;
-	int		img_width;
-	int		img_height;
+	int		w;
+	int		h;
 }	t_image;
 
-typedef struct	s_images
+typedef struct s_images
 {
 	t_image		flr;
 	t_image		per;
-	t_image 	wl;
+	t_image		wl;
 	t_image		exit;
-	t_image 	cons;
+	t_image		cons;
 }	t_images;
 
-typedef struct	s_so_long
+typedef struct s_so_long
 {
 	void		*mlx;
 	void		*mlx_win;
@@ -65,7 +65,7 @@ int		so_long(char **argv, char **mapa);
 int		ber(char **mapa, char *str, int option);
 int		canwin(char **mapa, int i, int j);
 void	win(t_so_long *sl);
-void	move(t_so_long *sl, int aux_i, int aux_j, int i, int j);
+void	move(t_so_long *sl, int aux_i, int aux_j, int i);
 int		ft_a(int keycode, t_so_long *sl);
 void	putline(int i, int j, t_so_long sl);
 void	dclvr(t_so_long *sl);
