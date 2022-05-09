@@ -1,61 +1,103 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   servidor.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/09 20:41:15 by eniglesi          #+#    #+#             */
+/*   Updated: 2022/05/09 20:41:17 by eniglesi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <signal.h>
 # include <string.h>
+# include "../includes/printf/ft_printf.h"
 
-static char *str_b;
+char *str;
+
+void	ft_realloc(void)
+{
+	char	*aux;
+
+	aux = ft_calloc(sizeof(char), ft_strlen(str) + 1);
+	ft_strlcpy(aux, str, ft_strlen(str) + 1);
+	free(str);
+	str = ft_calloc(sizeof(char), ft_strlen(aux) + 2);
+	ft_strlcpy(str, aux, ft_strlen(aux) + 1);
+	free(aux);
+}
+
+void	print_str(void)
+{
+	int		i;
+	unsigned char	*aux;
+
+	aux = ft_calloc(sizeof(char), (ft_strlen(str) / 8) + 1);
+	i = 0;
+	while (str[i * 8])
+	{
+		if (str[i * 8] == '1')
+			aux[i] += 128;
+		if (str[(i * 8) + 1] == '1')
+			aux[i] += 64;
+		if (str[(i * 8) + 2] == '1')
+			aux[i] += 32;
+		if (str[(i * 8) + 3] == '1')
+			aux[i] += 16;
+		if (str[(i * 8) + 4] == '1')
+			aux[i] += 8;
+		if (str[(i * 8) + 5] == '1')
+			aux[i] += 4;
+		if (str[(i * 8) + 6] == '1')
+			aux[i] += 2;
+		if (str[(i * 8) + 7] == '1')
+			aux[i] += 1;
+		i++;
+	}
+	ft_printf("%s\n", aux);
+	free(str);
+	free(aux);
+	str = ft_calloc(sizeof(char), 2);
+}
+
+01010101 010101010101
+85
 
 void	bintoa(int signal)
 {
-	printf("bintoa\n");
-	int		i;
-	int 	j;
-	char	*aux;
+
+	int	i;
+	int	j;
 
 	j = 0;
-	i = strlen(str_b);
-	printf("%s -------- \n", str_b);
-	aux = calloc(sizeof(char), i + 2);
-	strcpy(aux, str_b);
-	free(str_b);
+	i = ft_strlen(str);
+	ft_realloc();
 	if (signal == 30)
-		aux[i] = '0';
+		str[i] = '0';
 	if (signal == 31)
-		aux[i] = '1';
-	while(j < 8 && ((i + 1) % 8) == 0)
-	{
-		if (aux[i - j] == '1')
-			break ;
+		str[i] = '1';
+	while(str[(i) - j] == '0' && j < 8)
 		j++;
-	}
-	if (j == 8 && ((i + 1) % 8) == 0)
-	{
-		free(aux);
-		str_b = calloc(sizeof(char), 1);
-	}
-	else
-	{
-		str_b = calloc(sizeof(char), (strlen(aux)));
-		strcpy(str_b, aux);
-		free(aux);
-	}
+	if(j == 8 && (i + 1) % 8 == 0)
+		print_str();
 }
 
 int	main()
 {
 	pid_t	pid_server;
 
-	str_b = calloc(sizeof(char), 2);
-	str_b[0] = 0;
+	str = ft_calloc(sizeof(char), 2);
 	signal(30, bintoa);
 	signal(31, bintoa);
 	pid_server = getpid();
-	printf("Servicio = %i\n", pid_server);
+	ft_printf("Pid_server = %i\n", pid_server);
 	while(1)
 	{
 		sleep(2);
-		printf("zzzZZZzzz\n");
 	}
 	return (0);
 }

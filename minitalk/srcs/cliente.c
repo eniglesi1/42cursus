@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cliente.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/09 20:41:33 by eniglesi          #+#    #+#             */
+/*   Updated: 2022/05/09 20:41:36 by eniglesi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <signal.h>
 # include <string.h>
+# include "../includes/printf/ft_printf.h"
 
 void	send_binary(int j, pid_t pid_server)
 {
-	printf("send_binary\n");
 	if (j >= 128)
 	{
 		j -=128;
 		kill(pid_server, 31);
-		printf("128\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -20,7 +31,6 @@ void	send_binary(int j, pid_t pid_server)
 	{
 		j -=64;
 		kill(pid_server, 31);
-		printf("64\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -29,7 +39,6 @@ void	send_binary(int j, pid_t pid_server)
 	{
 		j -=32;
 		kill(pid_server, 31);
-		printf("32\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -38,7 +47,6 @@ void	send_binary(int j, pid_t pid_server)
 	{
 		j -=16;
 		kill(pid_server, 31);
-		printf("16\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -47,7 +55,6 @@ void	send_binary(int j, pid_t pid_server)
 	{
 		j -=8;
 		kill(pid_server, 31);
-		printf("8\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -56,7 +63,6 @@ void	send_binary(int j, pid_t pid_server)
 	{
 		j -=4;
 		kill(pid_server, 31);
-		printf("4\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -65,7 +71,6 @@ void	send_binary(int j, pid_t pid_server)
 	{
 		j -=2;
 		kill(pid_server, 31);
-		printf("2\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -74,7 +79,6 @@ void	send_binary(int j, pid_t pid_server)
 	{
 		j -=1;
 		kill(pid_server, 31);
-		printf("1\n");
 	}
 	else
 		kill(pid_server, 30);
@@ -85,7 +89,6 @@ static void	end(pid_t pid_server)
 {
 	int	i;
 
-	printf("end\n");
 	i = 0;
 	while(i < 8)
 	{
@@ -103,7 +106,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	if (argc == 3)
 	{
-		pid_server = atoi(argv[1]);
+		pid_server = ft_atoi(argv[1]);
 		while(argv[2][i])
 		{
 			send_binary((unsigned char)argv[2][i], pid_server);
