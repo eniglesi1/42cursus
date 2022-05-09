@@ -8,46 +8,45 @@ static char *str_b;
 
 void	bintoa(int signal)
 {
-	printf("bintoa\nlucd");
-	int	i;
-	int j;
+	printf("bintoa\n");
+	int		i;
+	int 	j;
+	char	*aux;
 
 	j = 0;
 	i = strlen(str_b);
+	printf("%s -------- \n", str_b);
+	aux = calloc(sizeof(char), i + 2);
+	strcpy(aux, str_b);
+	free(str_b);
 	if (signal == 30)
-		str_b[i] = '0';
+		aux[i] = '0';
 	if (signal == 31)
-		str_b[i] = '1';
-	str_b[i + 1] = 0;
+		aux[i] = '1';
 	while(j < 8 && ((i + 1) % 8) == 0)
 	{
-		if (str_b[i - j] == '1')
+		if (aux[i - j] == '1')
 			break ;
 		j++;
 	}
 	if (j == 8 && ((i + 1) % 8) == 0)
 	{
-		printf("%s _______1 \n", str_b);
-		free(str_b);
-		str_b = malloc(sizeof(char) * 2);
-		str_b[0] = 0;
+		free(aux);
+		str_b = calloc(sizeof(char), 1);
 	}
-	printf("%s -------- \n", str_b);
-	char *aux = malloc(sizeof(char) * strlen(str_b));
-	strcpy(aux, str_b);
-	free(str_b);
-	str_b = malloc(sizeof(char) * (strlen(aux) + 1));
-	printf("%s -------- \n", str_b);
-	strcpy(str_b, aux);
-	free(aux);
-	printf("%s -------- \n", str_b);
+	else
+	{
+		str_b = calloc(sizeof(char), (strlen(aux)));
+		strcpy(str_b, aux);
+		free(aux);
+	}
 }
 
 int	main()
 {
 	pid_t	pid_server;
 
-	str_b = malloc(sizeof(char) * 2);
+	str_b = calloc(sizeof(char), 2);
 	str_b[0] = 0;
 	signal(30, bintoa);
 	signal(31, bintoa);

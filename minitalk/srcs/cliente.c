@@ -15,7 +15,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 	if (j >= 64)
 	{
 		j -=64;
@@ -24,7 +24,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 	if (j >= 32)
 	{
 		j -=32;
@@ -33,7 +33,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 	if (j >= 16)
 	{
 		j -=16;
@@ -42,7 +42,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 	if (j >= 8)
 	{
 		j -=8;
@@ -51,7 +51,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 	if (j >= 4)
 	{
 		j -=4;
@@ -60,7 +60,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 	if (j >= 2)
 	{
 		j -=2;
@@ -69,7 +69,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 	if (j >= 1)
 	{
 		j -=1;
@@ -78,7 +78,7 @@ void	send_binary(int j, pid_t pid_server)
 	}
 	else
 		kill(pid_server, 30);
-	sleep(1);
+	usleep(100);
 }
 
 static void	end(pid_t pid_server)
@@ -90,7 +90,7 @@ static void	end(pid_t pid_server)
 	while(i < 8)
 	{
 		kill(pid_server, 30);
-		sleep(1);
+		usleep(100);
 		i++;
 	}
 }
