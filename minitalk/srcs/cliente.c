@@ -19,70 +19,21 @@
 
 void	send_binary(int j, pid_t pid_server)
 {
-	if (j >= 128)
+	int	num;
+
+	num = 128;
+	while (num >= 1)
 	{
-		j -= 128;
-		kill(pid_server, 31);
+		if (j >= num)
+		{
+			j -= num;
+			kill(pid_server, 31);
+		}
+		else
+			kill(pid_server, 30);
+		usleep(100);
+		num /= 2;
 	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
-	if (j >= 64)
-	{
-		j -= 64;
-		kill(pid_server, 31);
-	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
-	if (j >= 32)
-	{
-		j -= 32;
-		kill(pid_server, 31);
-	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
-	if (j >= 16)
-	{
-		j -= 16;
-		kill(pid_server, 31);
-	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
-	if (j >= 8)
-	{
-		j -= 8;
-		kill(pid_server, 31);
-	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
-	if (j >= 4)
-	{
-		j -= 4;
-		kill(pid_server, 31);
-	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
-	if (j >= 2)
-	{
-		j -= 2;
-		kill(pid_server, 31);
-	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
-	if (j >= 1)
-	{
-		j -= 1;
-		kill(pid_server, 31);
-	}
-	else
-		kill(pid_server, 30);
-	usleep(100);
 }
 
 static void	end(pid_t pid_server)
@@ -90,7 +41,7 @@ static void	end(pid_t pid_server)
 	int	i;
 
 	i = 0;
-	while(i < 8)
+	while (i < 8)
 	{
 		kill(pid_server, 30);
 		usleep(100);
@@ -107,7 +58,7 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 	{
 		pid_server = ft_atoi(argv[1]);
-		while(argv[2][i])
+		while (argv[2][i])
 		{
 			send_binary((unsigned char)argv[2][i], pid_server);
 			i++;
