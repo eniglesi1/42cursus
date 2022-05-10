@@ -64,9 +64,6 @@ void	print_str(void)
 	str = ft_calloc(sizeof(char), 2);
 }
 
-01010101 010101010101
-85
-
 void	bintoa(int signal)
 {
 
