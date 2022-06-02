@@ -31,7 +31,7 @@ void	send_binary(int j, pid_t pid_server)
 		}
 		else
 			kill(pid_server, 30);
-		usleep(100);
+		usleep(500);
 		num /= 2;
 	}
 }
@@ -44,7 +44,7 @@ static void	end(pid_t pid_server)
 	while (i < 8)
 	{
 		kill(pid_server, 30);
-		usleep(100);
+		usleep(500);
 		i++;
 	}
 }
