@@ -20,7 +20,7 @@ LIB = ./includes/printf/libftprintf.a
 
 NAME_S = servidor
 NAME_C = cliente
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 all: $(NAME_S) $(NAME_C)
 

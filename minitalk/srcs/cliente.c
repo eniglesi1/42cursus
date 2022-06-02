@@ -17,35 +17,19 @@
 #include <string.h>
 #include "../includes/printf/ft_printf.h"
 
-void	send_binary(int j, pid_t pid_server)
+void	send_binary(char c, pid_t pid_server)
 {
 	int	num;
 
-	num = 128;
-	while (num >= 1)
+	num = 7;
+	while (num >= 0)
 	{
-		if (j >= num)
-		{
-			j -= num;
+		if (((c >> num) & 1) == 1)
 			kill(pid_server, 31);
-		}
 		else
 			kill(pid_server, 30);
-		usleep(500);
-		num /= 2;
-	}
-}
-
-static void	end(pid_t pid_server)
-{
-	int	i;
-
-	i = 0;
-	while (i < 8)
-	{
-		kill(pid_server, 30);
-		usleep(500);
-		i++;
+		usleep(50);
+		num--;
 	}
 }
 
@@ -58,12 +42,12 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 	{
 		pid_server = ft_atoi(argv[1]);
-		while (argv[2][i])
+		while (argv[2][i] != 0)
 		{
-			send_binary((unsigned char)argv[2][i], pid_server);
+			send_binary(argv[2][i], pid_server);
 			i++;
 		}
-		end(pid_server);
+		send_binary(0, pid_server);
 	}
 	return (0);
 }
