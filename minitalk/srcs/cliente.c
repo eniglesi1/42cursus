@@ -17,7 +17,7 @@
 #include <string.h>
 #include "../includes/printf/ft_printf.h"
 
-void	send_binary(char c, pid_t pid_server)
+void	send_binary(char c, pid_t pid_server, int len)
 {
 	int	num;
 
@@ -28,7 +28,14 @@ void	send_binary(char c, pid_t pid_server)
 			kill(pid_server, 31);
 		else
 			kill(pid_server, 30);
-		usleep(50);
+		if (len <= 500)
+			usleep(50);
+		else if (len > 500 && len < 1000)
+			usleep(len / 10);
+		else if (len > 100000)
+			usleep(1500);
+		else
+			usleep(1000);
 		num--;
 	}
 }
@@ -44,10 +51,10 @@ int	main(int argc, char **argv)
 		pid_server = ft_atoi(argv[1]);
 		while (argv[2][i] != 0)
 		{
-			send_binary(argv[2][i], pid_server);
+			send_binary(argv[2][i], pid_server, ft_strlen(argv[2]));
 			i++;
 		}
-		send_binary(0, pid_server);
+		send_binary(0, pid_server, 0);
 	}
 	return (0);
 }
