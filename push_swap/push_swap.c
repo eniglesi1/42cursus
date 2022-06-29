@@ -10,56 +10,82 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./push_swap.h"
+
+void numparam(int argc)
+{
+	if (argc == 1)
+		exit(write(1, "Error\n", 5) - 5);
+}
+
+void allints(char **argv)
+{
+	int	i;
+	while (argv[0])
+	{
+		i == atoi(argv[0]);
+		argv++;
+	}
+}
+
+
+void parseo(int argc, char **argv)
+{
+	numparam(argc);
+	allints(argv);
+	dupnum(argv);
+}
 
 int main(int argc, char **argv)
 {
-	int	i;
-	int	min;
-	int	max;
-	int	*a;
-	int	*b;
+	t_data	data;
 
-	i = 1;
 	parseo(argc, argv);
-	a = ft_calloc(sizeof(int) * argc);
-	if (!a)
+	data.i = 1;
+	data.a = ft_calloc(sizeof(int), argc);
+	if (!data.a)
 		exit(write(1, "Malloc Error", 12) - 12);
-	b = ft_calloc(sizeof(int) * argc);
-	if (!b)
+	data.b = ft_calloc(sizeof(int), argc);
+	if (!data.b)
 		exit(write(1, "Malloc Error", 12) - 12);
-	while (i <= argc)
+	while (data.i <= argc)
 	{
-		a[i - 1] = atoi(argv[i]);
-		i++;
+		data.a[data.i- 1] = atoi(argv[data.i]);
+		data.i++;
 	}
-	while (org_ab(a, b) != 1)
+	while (org_ab(data.a, data.b) != 1)
 	{
-		min = limits(a, 0);
-		max = limits(a, 1);
-		while (org(a, 0))
+		r(data.b, 0);
+		data.min = limits(data.a, 0);
+		data.max = limits(data.a, 1);
+		while (org(data.a, 0))
 		{
-			if (a[0] == min)
-				r(a, 0);
-			while (a[0] > a[ft_strlen(a) - 1] && a[0] != min)
-				r(a, 0);
-			while (a[0] < a[ft_strlen(a) - 1] && a[0] != min)
-				p(b, 1);
+			if (data.a[0] == data.min)
+				r(data.a, 0);
+			while (data.a[0] > data.a[ft_intlen(data.a) - 1] && data.a[0] != data.min)
+				r(data.a, 0);
+			while (data.a[0] < data.a[ft_intlen(data.a) - 1] && data.a[0] != data.min)
+				p(data.b, 1);
 		}
-		min = limits(b, 0);
-		max = limits(b, 1);
-		while (org(b, 1))
+		r(data.a, 0);
+		data.min = limits(data.b, 0);
+		data.max = limits(data.b, 1);
+		while (org(data.b, 1))
 		{
-			if (b[0] == min)
-				r(b, 1);
-			while (b[0] > b[ft_strlen(b) - 1] && b[0] != min)
-				r(b, 1);
-			while (b[0] < b[ft_strlen(b) - 1] && b[0] != min)
-				p(a, 0);
+			if (data.b[0] == data.min)
+				r(data.b, 1);
+			while (data.b[0] > data.b[ft_intlen(data.b) - 1] && data.b[0] != data.min)
+				r(data.b, 1);
+			while (data.b[0] < data.b[ft_intlen(data.b) - 1] && data.b[0] != data.min)
+				p(data.a, 0);
 		}
+	}
+	while (data.b[0] && !org(data.a, 0))
+	{
+		if (data.b[0] > data.a[ft_intlen(data.a) - 1] && data.b[0] < data.a[0])
+			p(data.b,1);
+		else
+			r(data.a, 0);
 	}
 	return (0);
 }
-2 3 4 5 84 94 920 942 2394
-304 9 7 15 6 25 19
-6 304

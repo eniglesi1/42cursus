@@ -24,7 +24,7 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }	t_data;
-//w = sidth && h = height 
+//w = width && h = height 
 typedef struct s_image
 {
 	void	*mlx;
