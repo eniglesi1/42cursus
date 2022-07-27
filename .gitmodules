@@ -1,3 +1,6 @@
 [submodule "Push_swap"]
 	path = Push_swap
 	url = git@github.com:eniglesi1/Push_swap.git
+[submodule "GetNextLine"]
+	path = GetNextLine
+	url = git@github.com:eniglesi1/GetNextLine.git
