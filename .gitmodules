@@ -4,3 +4,6 @@
 [submodule "GetNextLine"]
 	path = GetNextLine
 	url = git@github.com:eniglesi1/GetNextLine.git
+[submodule "Minitalk"]
+	path = Minitalk
+	url = git@github.com:eniglesi1/Minitalk.git
