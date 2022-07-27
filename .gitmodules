@@ -10,3 +10,6 @@
 [submodule "ft_printf"]
 	path = ft_printf
 	url = git@github.com:eniglesi1/Ft_printf.git
+[submodule "So_long"]
+	path = So_long
+	url = git@github.com:eniglesi1/So_long.git
