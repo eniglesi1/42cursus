@@ -7,3 +7,6 @@
 [submodule "Minitalk"]
 	path = Minitalk
 	url = git@github.com:eniglesi1/Minitalk.git
+[submodule "ft_printf"]
+	path = ft_printf
+	url = git@github.com:eniglesi1/Ft_printf.git
