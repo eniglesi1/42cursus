@@ -21,6 +21,7 @@ void numparam(int argc)
 void allints(char **argv)
 {
 	int	i;
+
 	while (argv[0])
 	{
 		i == atoi(argv[0]);
@@ -32,7 +33,7 @@ void allints(char **argv)
 void parseo(int argc, char **argv)
 {
 	numparam(argc);
-	allints(argv);
+	allints(argv + 1);
 	dupnum(argv);
 }
 

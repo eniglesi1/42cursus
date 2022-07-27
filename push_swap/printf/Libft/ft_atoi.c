@@ -34,7 +34,6 @@ int	ft_atoi(const char *nptr)
 		a = a * 10 + (nptr[b] - 48);
 		b++;
 	}
-	printf("%lli---\n", a);
 	if ((a > 2147483648 && neg == 1) || (a > 2147483647 && neg == 0))
 		exit(write(1, "Error\n", 6) - 6);
 	if (neg % 2 == 1)
